@@ -1,0 +1,230 @@
+﻿    <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="BoomCloudDemo.MasterPage" %>
+
+    <!DOCTYPE html>
+    <html>
+    <head runat="server">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+        <title>BoomCloud Demosite</title>
+
+
+        <style>
+            header {
+                background-color: ghostwhite;
+                color: #fff;
+                text-align: center;
+                position: fixed;
+                padding-right: 100%;
+                z-index: 999;
+            }
+
+            .left-links ul {
+                list-style: none;
+                padding-left: 0px;
+                text-decoration: none
+            }
+
+            .left-links li {
+                margin-bottom: 0px;
+                text-align: center;
+                position: relative;
+                text-decoration: none
+            }
+
+
+            .container {
+                display: flex;
+                align-items: flex-start;
+            }
+
+            footer {
+                background-color: ghostwhite;
+                padding-left:68%;
+                margin-top: auto;
+                border: 1px solid black;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 130vh;
+                margin: 0;
+            }
+
+            form {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            
+            .menuStyle {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .menuStyle .symbol {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            margin-top: 3px;
+        }
+
+        .menuStyle:hover .RadTabStrip {
+            display: block;
+            border-radius:10px
+        }
+
+        .menuStyle .RadTabStrip {
+            display: none;
+            position: absolute;
+            background-color: dimgray;
+            list-style: none;
+            z-index: 1;
+            border: 1px solid #ccc;
+        }
+
+        .menuStyle .RadTabStrip li {
+            padding-bottom: 5px;
+            padding:18px;
+            text-decoration: none;
+            color:white
+        }
+
+        .menuStyle .RadTabStrip li:hover {
+            background-color: deepskyblue; 
+        }
+
+        .menuStyle .RadTabStrip li a {
+            text-decoration: none;
+            color: black;
+        }
+
+            #sidebar {
+                width: 280px;
+                height: 100vh;
+                background-color: dimgray;
+                position: fixed;
+                margin-top: 68px;
+                border: 1px solid black;
+            }
+
+            #sidebar ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #sidebar ul li {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                cursor: pointer;
+                padding-bottom: 20px;
+                padding: 17px;
+                margin-left:0px;
+                transition: background-color 0.3s;
+            }
+
+            #sidebar ul li:hover {
+                background-color: deepskyblue;
+            }
+
+            #sidebar ul li:hover span.text {
+                display: inline-block;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            #sidebar ul li span.icon {
+                display: inline-block;
+            }
+
+            #sidebar ul li span.text {
+                font-size: 20px;
+                margin-right: 10px;
+                color: whitesmoke;
+            }
+            .container{
+                margin-left:-12px
+            }
+        </style>
+
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <header style="display:flex; border: 1px solid black; color: black">
+                <img src="Horizontal_Logo.png" style="margin-top:5px" width="280" height="60" />
+                <telerik:RadScriptManager ID="masterpageRadScript" runat="server"></telerik:RadScriptManager>
+                <div style="margin-left:155%">
+                    <telerik:RadLabel ID="welcomeMessage" style="margin-top:25px;font-size:18px;margin-left:275%; color:black; white-space:nowrap" runat="server"></telerik:RadLabel>
+                </div>
+                <div style="margin-top:28px;margin-left:75%">
+                    <div style="display: flex">
+                        <a href="#" style="margin-top:2px">
+                        </a>
+                        <div class="menuStyle">
+                            <div style="display:flex">
+                                <div style="display:flex block">
+                                    <div class="symbol"></div>
+                                    <div class="symbol"></div>
+                                    <div class="symbol"></div>
+                                </div>
+                            </div>
+                            <ul class="RadTabStrip">
+                                <li><a href="Dashboard.aspx">Dashboard</a></li>
+                                <li><a href="Members.aspx">Members</a></li>
+                                <li><a href="Setting.aspx">Setting</a></li>
+                                <li><a href="SignIn.aspx">Sign Out</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+           <div class="container">
+    <div id="sidebar">
+        <ul>
+    <a href="Dashboard.aspx" style="text-decoration: none;">
+        <li>
+            <span class="text">Dashboard</span>
+            <i class="bi bi-speedometer2" style="color:white;"></i>
+        </li>
+    </a>
+    <a href="Members.aspx" style="text-decoration: none;">
+        <li>
+            <span class="text">Members</span>
+            <i class="bi bi-people-fill" style="color:white;"></i>
+        </li>
+    </a>
+    <a href="Setting.aspx" style="text-decoration: none;">
+        <li>
+            <span class="text">Settings</span>
+            <i class="bi bi-gear"style="color:white;" ;></i>
+        </li>
+    </a>
+
+    <a href="SignIn.aspx?logout=true" style="text-decoration: none;">
+    <li>
+        <span class="text">Sign Out</span>
+        <i class="bi bi-box-arrow-right" style="color:white;"></i>
+    </li>
+    </a>
+</ul>
+    </div>
+</div>
+            
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+              
+            </asp:ContentPlaceHolder>
+
+            <footer >
+                <p>Copyright © 2023 BoomCloud Apps. All rights reserved</p>
+            </footer>
+        </form>
+    </body>
+
+    </html>
